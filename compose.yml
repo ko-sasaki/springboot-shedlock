@@ -1,0 +1,22 @@
+
+name: shed-lock
+services:
+  db:
+      image: "postgres:latest"
+      container_name: "shed-lock-db"
+      environment:
+          POSTGRES_USER: "shedlock"
+          POSTGRES_PASSWORD: "shedlock"
+          POSTGRES_DB: "shedlock"
+      ports:
+      - "5432:5432"
+      volumes:
+        - database:/var/lib/postgresql/data
+        - ./postgres/init:/docker-entrypoint-initdb.d
+      networks:
+        - shedlock-network
+
+volumes:
+  database:
+networks:
+  shedlock-network:

@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: schedule
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/shedlock
+    username: shedlock
+    password: shedlock
+  docker:
+    compose:
+      file: compose.yml
+  task:
+    scheduling:
+      pool:
+        size: 10
+  main:
+    keep-alive: true
+    threads:
+      virtual:
+        enabled: true
+server:
+  port: 8081
